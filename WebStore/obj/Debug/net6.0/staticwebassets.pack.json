@@ -53,6 +53,14 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
+      "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css"
+    },
+    {
+      "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-icons.min.css"
+    },
+    {
       "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
@@ -147,6 +155,14 @@
     {
       "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\css\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\fonts\\bootstrap-icons.woff2"
     },
     {
       "Id": "C:\\University\\INFT3500\\INFT3500\\WebStore\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
