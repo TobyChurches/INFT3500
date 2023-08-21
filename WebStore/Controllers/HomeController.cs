@@ -24,5 +24,15 @@ namespace WebStore.Controllers
         {
             return View();
         }
+
+        public IActionResult OrderDetails()
+        {
+            return View();
+        }
+
+        public IActionResult Account()
+        {
+            return View();
+        }
     }
 }
