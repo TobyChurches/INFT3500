@@ -15,4 +15,22 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: whitesmoke;
+}
+
+.card {
+    background-color: white;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin: 20px 0px;
+    padding: 20px;
+}
+
+footer {
+    background-color: white;
+    padding: 0px 10px;
+}
+
+.display-4 {
+    font-size: 2rem;
 }

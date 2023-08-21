@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebStore.Models;
+
 namespace WebStore
 {
     public class Program
@@ -8,6 +11,9 @@ namespace WebStore
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<StoreDbContext>(options =>
+                           options.UseSqlServer(builder.Configuration.GetConnectionString("StoreDbConnection")));
 
             var app = builder.Build();
 
