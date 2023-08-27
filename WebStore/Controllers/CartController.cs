@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebStore.Controllers
+namespace WebStore.Controllers;
+
+public class CartController : Controller
 {
-    public class CartController : Controller
+    public IActionResult Cart()
     {
-        public IActionResult Cart()
-        {
-            return View();
-        }
+        return View();
     }
 }

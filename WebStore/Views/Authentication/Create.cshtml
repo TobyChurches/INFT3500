@@ -1,10 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Create Account";
     Layout = "~/Views/Shared/_LayoutNoAuth.cshtml";
 }
 
 <div class="card text-center">
-    <h1 class="display-2">Login</h1>
+    <h1 class="display-2">Create Account</h1>
     <hr />
     @if (ViewData.ModelState.ErrorCount > 0)
     {
@@ -15,15 +15,32 @@
             }
         </div>
     }
-    <br />
-    <form method="post" asp-controller="Authentication" asp-action="Login">
+    <form method="post" asp-controller="Authentication" asp-action="Create">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                    <span class="input-group-text">Username</span>
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Name" name="name">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Username</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Enter Username" name="username">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
                 </div>
             </div>
 
@@ -35,11 +52,8 @@
                     <input type="password" class="form-control" placeholder="Enter Password" name="password">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary col-2">Login</button>
-        </div>
-        <br />
-        <div class="row justify-content-center">
-            <p>Not a member? <a asp-action="Create">Sign-up</a> now</p>
+
+            <button type="submit" class="btn btn-primary col-2">Create Account</button>
         </div>
     </form>
 </div>

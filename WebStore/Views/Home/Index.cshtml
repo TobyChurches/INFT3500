@@ -13,13 +13,20 @@
     </div>
 </div>
 
+@if (TempData.Keys.Contains("Welcome"))
+{   
+    <div class="alert alert-primary text-center">
+        <h4>Welcome @TempData["Welcome"]</h4>
+    </div>
+}
+
 <div class="card text-center row">
     <p class="display-4">Search our Wide Range of Products</p>
     <form action="@Url.Action("SearchResults", "Search")" method="post">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="e.g. Movies, Books" aria-label="Search Store" aria-describedby="basic-addon2" name="searchQuery">
             <div class="input-group-append">
-                <button class="btn btn-dark" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
     </form>

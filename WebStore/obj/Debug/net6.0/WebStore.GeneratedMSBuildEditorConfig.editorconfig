@@ -32,8 +32,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/University/INFT3500/INFT3500/WebStore/Views/Authentication/CreateAccount.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ3JlYXRlQWNjb3VudC5jc2h0bWw=
+[C:/University/INFT3500/INFT3500/WebStore/Views/Authentication/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/University/INFT3500/INFT3500/WebStore/Views/Authentication/Login.cshtml]
@@ -83,3 +83,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/University/INFT3500/INFT3500/WebStore/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zxfg1ti4ww
+
+[C:/University/INFT3500/INFT3500/WebStore/Views/Shared/_LayoutNoAuth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROb0F1dGguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-vl6rohd8pb

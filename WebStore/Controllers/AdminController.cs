@@ -1,27 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebStore.Controllers
+namespace WebStore.Controllers;
+
+public class AdminController : Controller
 {
-    public class AdminController : Controller
+    public IActionResult EditItem()
     {
-        public IActionResult EditItem()
-        {
-            return View();
-        }
+        return View();
+    }
 
-        public IActionResult ItemList()
-        {
-            return View();
-        }
+    public IActionResult ItemList()
+    {
+        return View();
+    }
 
-        public IActionResult EditUser()
-        {
-            return View();
-        }
+    public IActionResult EditUser()
+    {
+        return View();
+    }
 
-        public IActionResult UserList()
-        {
-            return View();
-        }
+    public IActionResult UserList()
+    {
+        return View();
     }
 }

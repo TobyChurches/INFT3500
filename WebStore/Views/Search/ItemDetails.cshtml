@@ -1,13 +1,37 @@
-﻿@{
+﻿@model Product
+@{
     ViewData["Title"] = "Details";
 }
 
-<div class="card text-center">
-    <h1 class="display-2">Item: 123456</h1>
+<div class="card">
+    <h1 class="display-2 text-center">Item Details</h1>
     <hr />
     <div class="row justify-content-center">
-        <p class="col-8 text-justify">
-            This page will contain the details of the item extracted from the database
-        </p>
+        <div class="col-8">
+            <h3 class="text-center">Item: @Model.Id</h3>
+            <br />
+            <dl class="row">
+                <dt class="col-sm-4">Name:</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                <dt class="col-sm-4">Author:</dt>
+                <dd class="col-sm-8">@Model.Author</dd>
+
+                <dt class="col-sm-4">Description:</dt>
+                <dd class="col-sm-8 text-justify">@Model.Description</dd>
+
+                <dt class="col-sm-4">Genre:</dt>
+                <dd class="col-sm-8">@Model.Genre</dd>
+
+                <dt class="col-sm-4">Sub-Genre:</dt>
+                <dd class="col-sm-8">@Model.SubGenre</dd>
+
+                <dt class="col-sm-4">Date Published:</dt>
+                <dd class="col-sm-8">@Model.Published.ToString()</dd>
+            </dl>
+            <div class="row justify-content-center">
+                <a class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
     </div>
 </div>
