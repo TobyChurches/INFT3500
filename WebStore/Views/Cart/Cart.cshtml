@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<CartItemViewModel>
 @{
+    ViewData["Title"] = "Shopping Cart";
+    var totalItems = 0;
+    Model.ForEach(x => totalItems += x.Quantity);
 }
+
+<div class="card text-center">
+    <h1 class="display-2">Shopping Cart</h1>
+    <hr />
+    <p>You're almost there! Please review your cart and proceed with the checkout process</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            
+            @if (ViewBag.EmptyCartMessage != null)
+            {
+                <div class="alert alert-primary text-center">
+                    <p>@ViewBag.EmptyCartMessage</p>
+                </div>
+            }
+
+            @if(Model != null && Model.Any())
+            {
+                foreach(var item in Model)
+                {
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill h3"></i>
+                        <div class="ms-4">
+                            <h5>Name: @item.Product.Name</h5>
+                            <p>Item ID: @item.Product.Id</p>
+                            <p>Quantity: @item.Quantity </p>
+                        </div>
+                        <div class="ms-auto">
+                            <a class="btn btn-light" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@item.Product.Id">Remove</a>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Summary</h5>
+                <p class="card-text">Total Items: @totalItems</p>
+                <a class="btn btn-primary w-100" asp-controller="Cart" asp-action="Checkout">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>

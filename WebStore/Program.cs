@@ -9,8 +9,15 @@ namespace WebStore
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = false;
+                options.Cookie.IsEssential = true;
+            });
+
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddNewtonsoftJson();
 
             builder.Services.AddDbContext<StoreDbContext>(options =>
                            options.UseSqlServer(builder.Configuration.GetConnectionString("StoreDbConnection")));
@@ -27,6 +34,8 @@ namespace WebStore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

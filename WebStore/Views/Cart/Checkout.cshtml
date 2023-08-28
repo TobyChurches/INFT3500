@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="card text-center">
+    <h1 class="display-2">Checkout</h1>
+    <hr />
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form method="post" asp-controller="Cart" asp-action="Checkout">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Street Address</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Postcode</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Suburb</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">State</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter State" name="state">
+                </div>
+            </div>
+
+            <a type="submit" class="btn btn-light col-2 m-2" asp-controller="Cart" asp-action="Index">Return to Cart</a>
+            <button type="submit" class="btn btn-primary col-2 m-2">Place Order</button>
+        </div>
+    </form>
+</div>

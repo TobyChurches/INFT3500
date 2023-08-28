@@ -68,7 +68,7 @@ public class AuthenticationController : Controller
         }
 
         // TODO: Perform Authentication and Login
-        TempData.Add("Welcome", user.Name);
+        TempData.Add("HomeMessage", "Welcome " + user.Name);
         return RedirectToAction("Index", "Home");
     }
 
@@ -82,7 +82,7 @@ public class AuthenticationController : Controller
         }
     }
 
-    private static string GenerateHash(string password, string salt)
+    public static string GenerateHash(string password, string salt)
     {
         // Combines the password and salt together if the salt has value (DB issue)
         string saltAndPassword = String.IsNullOrEmpty(salt) ? (salt + password) : password;
