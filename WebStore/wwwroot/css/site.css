@@ -42,3 +42,23 @@ footer {
 p {
     margin: 8px 0px;
 }
+
+.alert {
+    margin: 0px;
+}
+
+.Form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mytexttitle {
+    flex-grow: 0;
+}
+
+.divider {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #9f9f9f;
+}

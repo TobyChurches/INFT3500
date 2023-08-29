@@ -36,6 +36,14 @@ public class CartController : Controller
     [HttpGet]
     public IActionResult Checkout()
     {
+        var cart = GetCart();
+        if(cart.Count == 0)
+        {
+            ViewBag.EmptyCartMessage = "Your cart is empty";
+            ModelState.AddModelError(string.Empty, "The cart is empty. Please add a item to the cart before checking out.");
+            return View("Cart");
+        }
+
         return View();
     }
 

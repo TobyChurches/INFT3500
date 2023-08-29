@@ -2,7 +2,10 @@
 @{
     ViewData["Title"] = "Shopping Cart";
     var totalItems = 0;
-    Model.ForEach(x => totalItems += x.Quantity);
+    if(Model != null && Model.Any())
+    {
+        Model.ForEach(x => totalItems += x?.Quantity ?? 0);
+    }
 }
 
 <div class="card text-center">
@@ -10,6 +13,18 @@
     <hr />
     <p>You're almost there! Please review your cart and proceed with the checkout process</p>
 </div>
+
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="row card ">
+        <div class="alert alert-danger text-center">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    </div>
+}
 
 <div class="row">
     <div class="col-lg-8">

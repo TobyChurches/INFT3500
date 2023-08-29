@@ -17,41 +17,138 @@
 
     <form method="post" asp-controller="Cart" asp-action="Checkout">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Street Address</span>
+            <fieldset>
+                <legend>Customer Information</legend>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email</span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="Enter Email" name="email">
                     </div>
-                    <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
                 </div>
-            </div>
 
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Postcode</span>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Phone Number</span>
+                        </div>
+                        <input type="tel" class="form-control" placeholder="Enter Phone Number" name="phoneNumber">
                     </div>
-                    <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
                 </div>
-            </div>
 
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Suburb</span>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Street Address</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
                     </div>
-                    <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
                 </div>
-            </div>
 
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">State</span>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Postcode</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
                     </div>
-                    <input type="text" class="form-control" placeholder="Enter State" name="state">
                 </div>
-            </div>
+
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Suburb</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">State</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter State" name="state">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Delivery</legend>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Street Address</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Postcode</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Suburb</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">State</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter State" name="state">
+                        </div>
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend>Payment</legend>
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Card Number</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter Card Number" name="cardNumber">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Card Owner</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Card Owner's Name" name="cardOwner">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Expiry</span>
+                        </div>
+                        <input type="date" class="form-control" placeholder="Enter Expiry Date" name="expiry">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">CVV</span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Enter CVV" name="cvv">
+                    </div>
+                </div>
+            </fieldset>
 
             <a type="submit" class="btn btn-light col-2 m-2" asp-controller="Cart" asp-action="Index">Return to Cart</a>
             <button type="submit" class="btn btn-primary col-2 m-2">Place Order</button>
