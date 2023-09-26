@@ -110,7 +110,10 @@ public class CartController : Controller
             .Where(p => cart.Contains(p.Id))
             .Select(p => new CartItemViewModel
             {
-                Product = p
+                Product = p,
+                Price = p.Stocktakes
+                    .Select(s => s.Price)
+                    .FirstOrDefault(),
             })
             .ToList();
 

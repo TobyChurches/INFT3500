@@ -72,7 +72,7 @@ public class AuthenticationController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-    private static string GenerateSalt()
+    public static string GenerateSalt()
     {
         using (var generator = RandomNumberGenerator.Create())
         {

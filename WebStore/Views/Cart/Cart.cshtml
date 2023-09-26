@@ -2,9 +2,14 @@
 @{
     ViewData["Title"] = "Shopping Cart";
     var totalItems = 0;
+    var totalCost = 0.0;
     if(Model != null && Model.Any())
     {
-        Model.ForEach(x => totalItems += x?.Quantity ?? 0);
+        Model.ForEach(x => 
+        {
+            totalItems += x?.Quantity ?? 0;
+            totalCost += x?.Price * x?.Quantity ?? 0.0;
+        });
     }
 }
 
@@ -47,6 +52,11 @@
                             <h5>Name: @item.Product.Name</h5>
                             <p>Item ID: @item.Product.Id</p>
                             <p>Quantity: @item.Quantity </p>
+                            <p>Individual Price: $ @item.Price</p>
+                            @if(item.Quantity > 1)
+                            {
+                                <p>Sub-total Price: $ @(item.Price * item.Quantity)</p>
+                            }
                         </div>
                         <div class="ms-auto">
                             <a class="btn btn-light" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@item.Product.Id">Remove</a>
@@ -63,6 +73,7 @@
             <div class="card-body">
                 <h5 class="card-title">Summary</h5>
                 <p class="card-text">Total Items: @totalItems</p>
+                <p class="card-text">Total Cost: $ @totalCost</p>
                 <a class="btn btn-primary w-100" asp-controller="Cart" asp-action="Checkout">Checkout</a>
             </div>
         </div>

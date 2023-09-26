@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model ProductViewModel
 @{
     ViewData["Title"] = "Details";
 }
@@ -16,17 +16,17 @@
 
     <div class="row justify-content-center">
         <div class="col-8">
-            <h3 class="text-center">Item: @Model.Id</h3>
+            <h3 class="text-center">Item: @Model.Product.Id</h3>
             <br />
             <dl class="row">
                 <dt class="col-sm-4">Name:</dt>
-                <dd class="col-sm-8">@Model.Name</dd>
+                <dd class="col-sm-8">@Model.Product.Name</dd>
 
                 <dt class="col-sm-4">Author:</dt>
-                <dd class="col-sm-8">@Model.Author</dd>
+                <dd class="col-sm-8">@Model.Product.Author</dd>
 
                 <dt class="col-sm-4">Description:</dt>
-                <dd class="col-sm-8 text-justify">@Model.Description</dd>
+                <dd class="col-sm-8 text-justify">@Model.Product.Description</dd>
 
                 <dt class="col-sm-4">Genre:</dt>
                 <dd class="col-sm-8">@Model.Genre</dd>
@@ -35,10 +35,20 @@
                 <dd class="col-sm-8">@Model.SubGenre</dd>
 
                 <dt class="col-sm-4">Date Published:</dt>
-                <dd class="col-sm-8">@Model.Published.ToString()</dd>
+                <dd class="col-sm-8">@Model.Product.Published.ToString()</dd>
+
+                <dt class="col-sm-4">Price:</dt>
+                <dd class="col-sm-8">$ @Model.Price</dd>
             </dl>
             <div class="row justify-content-center">
-                <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id">Add to Cart</a>
+                @if (@Model.Quantity > 0)
+                {
+                    <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Product.Id">Add to Cart</a>
+                }
+                else
+                {
+                    <a class="btn btn-secondary btn-lg" disabled>Out of Stock</a>
+                }
             </div>
         </div>
     </div>

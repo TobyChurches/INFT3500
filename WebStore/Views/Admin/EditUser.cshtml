@@ -1,5 +1,84 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model User
 @{
+    ViewData["Title"] = "User Details";
+    var title = "User Details";
+    var isEdit = true;
+
+    if (string.IsNullOrEmpty(Model.UserName))
+    {
+        title = "Add User";
+        isEdit = false;
+    }
 }
+
+<div class="card">
+    <h1 class="display-2 text-center">@title</h1>
+    <hr />
+
+    @if (TempData.Keys.Contains("Added"))
+    {
+        <div class="alert alert-primary text-center">
+            <p>@TempData["Added"]</p>
+        </div>
+    }
+
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form asp-controller="Admin" asp-action="@(isEdit ? "EditUser" : "AddUser")" method="post">
+        <input type="hidden" name="UserId" value="@Model.UserId">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @if (isEdit)
+                {
+                    <h3 class="text-center">User: @Model.UserId</h3>
+                    <br />
+                }
+                <dl class="row">
+                    <dt class="col-md-4">Username:</dt>
+                    <dd class="col-md-8"><input type="text" name="UserName" value="@Model.UserName" class="form-control" readonly="@isEdit"></dd>
+
+                    <dt class="col-md-4">Email:</dt>
+                    <dd class="col-md-8"><input type="email" name="Email" value="@Model.Email" class="form-control"></dd>
+
+                    <dt class="col-md-4">Name:</dt>
+                    <dd class="col-md-8"><input type="text" name="Name" value="@Model.Name" class="form-control"></dd>
+
+                    <dt class="col-md-4">Password:</dt>
+                    <dd class="col-md-8"><input type="password" name="HashPw" class="form-control" placeholder="- - - - -"></dd>
+
+                    <dt class="col-md-4">Is Admin:</dt>
+                    <dd class="col-md-8">
+                        @if (Model.IsAdmin.HasValue && Model.IsAdmin.Value == true)
+                        {
+                            <input type="checkbox" name="IsAdmin" value="true" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="IsAdmin" value="true">
+                        }
+                    </dd>
+                </dl>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-primary">@(isEdit ? "Update User" : "Add User")</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row justify-content-center mt-2">
+        <button class="btn btn-outline-primary col-md-8" id="deleteButton">Delete User</button
+    </div>
+</div>
+
+<script>
+    document.getElementById("deleteButton").addEventListener("click", function () {
+        window.location.href = "@Url.Action("DeleteUser", "Admin", new {id = Model.UserName})";
+    });
+</script>

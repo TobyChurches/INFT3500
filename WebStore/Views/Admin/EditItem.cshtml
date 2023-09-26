@@ -1,5 +1,184 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AdminProductViewModel
 @{
+    ViewData["Title"] = "Details";
+    var title = "Item Details";
+    var isEdit = true;
+
+    if (Model.Product.Id == 0)
+    {
+        title = "Add Item";
+        isEdit = false;
+    }
 }
+
+<div class="card">
+    <h1 class="display-2 text-center">@title</h1>
+    <hr />
+
+    @if (TempData.Keys.Contains("Added"))
+    {
+        <div class="alert alert-primary text-center">
+            <p>@TempData["Added"]</p>
+        </div>
+    }
+
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form asp-controller="Admin" asp-action="@(isEdit ? "EditItem" : "AddItem")" method="post">
+        <input type="hidden" name="Product.Id" value="@Model.Product.Id">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @if(isEdit)
+                {
+                    <h3 class="text-center">Item: @Model.Product.Id</h3>
+                    <br />
+                }
+                <dl class="row">
+                    <dt class="col-md-4">Name:</dt>
+                    <dd class="col-md-8"><input type="text" name="Product.Name" value="@Model.Product.Name" class="form-control"></dd>
+
+                    <dt class="col-md-4">Author:</dt>
+                    <dd class="col-md-8"><input type="text" name="Product.Author" value="@Model.Product.Author" class="form-control"></dd>
+
+                    <dt class="col-md-4">Description:</dt>
+                    <dd class="col-md-8"><textarea name="Product.Description" rows="5" class="form-control">@Model.Product.Description</textarea></dd>
+
+                    <dt class="col-md-4">Genre:</dt>
+                    <dd class="col-md-8">
+                        <select name="Product.Genre" id="Genre" class="form-control" onchange="Update()">
+                            @foreach (var genre in Model.Genres)
+                            {
+                                if(genre.Genre.GenreId == Model.Product.Genre)
+                                {
+                                    <option value="@genre.Genre.GenreId" selected>@genre.Genre.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@genre.Genre.GenreId">@genre.Genre.Name</option>
+                                }
+                            }
+                        </select>
+                    </dd>
+
+                    <dt class="col-md-4">Sub-Genre:</dt>
+                    <dd class="col-md-8">
+                        <select name="Product.SubGenre" id="SubGenre" class="form-control">
+                            <!-- Populated via JavaScript -->
+                        </select>
+                    </dd>
+
+                    <dt class="col-md-4">Date Published:</dt>
+                    <dd class="col-md-8"><input type="text" name="Product.Published" value="@Model.Product.Published.ToString()" class="form-control"></dd>
+
+                    <input type="hidden" name="Stocktake.ItemId" value="@Model.Stocktake.ItemId">
+
+                    <dt class="col-md-4">Price:</dt>
+                    <dd class="col-md-8"><input type="number" name="Stocktake.Price" value="@Model.Stocktake.Price" class="form-control"></dd>
+
+                    <dt class="col-md-4">Quantity:</dt>
+                    <dd class="col-md-8"><input type="number" name="Stocktake.Quantity" value="@Model.Stocktake.Quantity" class="form-control"></dd>
+
+                    <dt class="col-md-4">Source:</dt>
+                    <dd class="col-md-8">
+                        <select name="Source.Sourceid" id="Source" class="form-control">
+                            <!-- Populated via JavaScript -->
+                        </select>
+                    </dd>
+                </dl>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-primary">@(isEdit ? "Update Item" : "Add Item")</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row justify-content-center mt-2">
+        <button class="btn btn-outline-primary col-md-8" id="deleteButton">Delete Item</button
+    </div>
+</div>
+
+<script>
+    let allGenres;
+    let allSources;
+    let sourceSelect;
+    let genreSelect;
+    let subGenreSelect;
+    let product;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        allGenres = @Html.Raw(Json.Serialize(Model.Genres));
+        allSources = @Html.Raw(Json.Serialize(Model.Sources));
+        product = @Html.Raw(Json.Serialize(Model.Product));
+        genreSelect = document.getElementById('Genre');
+        subGenreSelect = document.getElementById('SubGenre');
+        sourceSelect = document.getElementById('Source');
+
+        // Update sub-genres on page load
+        Update();
+
+        // Attach the event listener
+        genreSelect.addEventListener('change', Update);
+    });
+
+    function Update() {
+        UpdateSubGenre();
+        UpdateSource();
+    }
+
+    function UpdateSubGenre() {
+        const selectedGenreId = genreSelect.value;
+        const selectedGenre = allGenres.find(g => g.genre.genreId == selectedGenreId);
+
+        // Clear existing options
+        subGenreSelect.innerHTML = '';
+
+        if (selectedGenre) {
+            selectedGenre.subGenre.forEach(sub => {
+                const option = document.createElement('option');
+                option.value = Object.keys(sub)[0];
+                option.text = sub[Object.keys(sub)[0]];
+                subGenreSelect.appendChild(option);
+
+                if(product.subGenre == Object.keys(sub)[0]) {
+                    option.setAttribute('selected', 'selected');
+                }
+            });
+        }
+    };
+
+    function UpdateSource() {
+        const selectedGenreId = genreSelect.value;
+        const selectedSource = allSources.filter(s => s.genre == selectedGenreId);
+
+        // Clear existing options
+        sourceSelect.innerHTML = '';
+
+        if (selectedSource) {
+            selectedSource.forEach(sub => {
+                const option = document.createElement('option');
+                option.value =  sub.sourceid;
+                option.text = sub.sourceName;
+                sourceSelect.appendChild(option);
+
+                if(product.sourceid == sub.sourceid) {
+                    option.setAttribute('selected', 'selected');
+                }
+            });
+        }
+    };
+
+    document.getElementById("deleteButton").addEventListener("click", function () {
+        window.location.href = "@Url.Action("DeleteItem", "Admin", new { id = Model.Product.Id })";
+    });
+</script>
+
+
+
+

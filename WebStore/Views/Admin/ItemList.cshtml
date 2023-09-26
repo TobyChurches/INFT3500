@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<ProductViewModel>
 @{
+    ViewData["Title"] = "Results";
 }
+
+<div class="card text-center">
+    <h1 class="display-2">Search Results</h1>
+    <hr />
+
+    @if (TempData.Keys.Contains("Deleted"))
+    {
+        <div class="alert alert-primary text-center">
+            <p>@TempData["Deleted"]</p>
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <partial name="_AdminSearchPartial" />
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <table class="table table-striped table-hover text-start">
+            <thead>
+                <tr>
+                    <th scope="col">Item Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr data-url="@Url.Action("EditItem", new {id = item.Product.Id})">
+                        <th scope="row">@item.Product.Id</th>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity Copies</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger">
+                <p>No results found.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("table tr[data-url]").on("click", function () {
+            window.location.href = $(this).data("url");
+        });
+    });
+</script>

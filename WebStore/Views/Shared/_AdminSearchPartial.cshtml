@@ -1,0 +1,16 @@
+﻿<p class="display-4">Search for Inventory Products</p>
+<form action="@Url.Action("ItemList", "Admin")" method="post">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="e.g. Id, Title" aria-label="Search Store" aria-describedby="basic-addon2" name="searchQuery">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-outline-primary" type="button" id="createItemButton">Create</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.getElementById("createItemButton").addEventListener("click", function () {
+        window.location.href = "@Url.Action("AddItem", "Admin")";
+    });
+</script>

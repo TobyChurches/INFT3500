@@ -19,5 +19,9 @@ public partial class User
 
     public string? HashPw { get; set; }
 
+    public bool? IsEmployee { get; set; }
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
+    public virtual ICollection<To> Tos { get; set; } = new List<To>();
 }

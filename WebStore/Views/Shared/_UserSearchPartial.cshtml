@@ -1,0 +1,16 @@
+﻿<p class="display-4">Search for System Users</p>
+<form action="@Url.Action("UserList", "Admin")" method="post">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="e.g. Id, Name" aria-label="Search Users" aria-describedby="basic-addon2" name="searchQuery">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-outline-primary" type="button" id="createUserButton">Create</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.getElementById("createUserButton").addEventListener("click", function () {
+        window.location.href = "@Url.Action("AddUser", "Admin")";
+    });
+</script>

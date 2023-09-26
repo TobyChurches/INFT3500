@@ -1,4 +1,7 @@
-﻿namespace WebStore.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebStore.Models;
 
 public partial class Order
 {
