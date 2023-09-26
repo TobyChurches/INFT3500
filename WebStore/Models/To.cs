@@ -31,5 +31,5 @@ public partial class To
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
-    public virtual Patron? Patron { get; set; }
+    public virtual User? Patron { get; set; }
 }
