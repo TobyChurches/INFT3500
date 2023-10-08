@@ -3,6 +3,7 @@
     ViewData["Title"] = "Details";
     var title = "Item Details";
     var isEdit = true;
+    var isDisabled = !User.IsInRole("Admin");
 
     if (Model.Product.Id == 0)
     {
@@ -43,17 +44,17 @@
                 }
                 <dl class="row">
                     <dt class="col-md-4">Name:</dt>
-                    <dd class="col-md-8"><input type="text" name="Product.Name" value="@Model.Product.Name" class="form-control"></dd>
+                    <dd class="col-md-8"><input type="text" name="Product.Name" value="@Model.Product.Name" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")></dd>
 
                     <dt class="col-md-4">Author:</dt>
-                    <dd class="col-md-8"><input type="text" name="Product.Author" value="@Model.Product.Author" class="form-control"></dd>
+                    <dd class="col-md-8"><input type="text" name="Product.Author" value="@Model.Product.Author" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")></dd>
 
                     <dt class="col-md-4">Description:</dt>
-                    <dd class="col-md-8"><textarea name="Product.Description" rows="5" class="form-control">@Model.Product.Description</textarea></dd>
+                    <dd class="col-md-8"><textarea name="Product.Description" rows="5" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")>@Model.Product.Description</textarea></dd>
 
                     <dt class="col-md-4">Genre:</dt>
                     <dd class="col-md-8">
-                        <select name="Product.Genre" id="Genre" class="form-control" onchange="Update()">
+                        <select name="Product.Genre" id="Genre" class="form-control" onchange="Update()" @(isDisabled ? "disabled=\"disabled\"" : "")>
                             @foreach (var genre in Model.Genres)
                             {
                                 if(genre.Genre.GenreId == Model.Product.Genre)
@@ -70,38 +71,44 @@
 
                     <dt class="col-md-4">Sub-Genre:</dt>
                     <dd class="col-md-8">
-                        <select name="Product.SubGenre" id="SubGenre" class="form-control">
+                        <select name="Product.SubGenre" id="SubGenre" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")>
                             <!-- Populated via JavaScript -->
                         </select>
                     </dd>
 
                     <dt class="col-md-4">Date Published:</dt>
-                    <dd class="col-md-8"><input type="text" name="Product.Published" value="@Model.Product.Published.ToString()" class="form-control"></dd>
+                    <dd class="col-md-8"><input type="text" name="Product.Published" value="@Model.Product.Published.ToString()" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")></dd>
 
-                    <input type="hidden" name="Stocktake.ItemId" value="@Model.Stocktake.ItemId">
+                    <input type="hidden" name="Stocktake.ItemId" value="@Model.Stocktake.ItemId" @(isDisabled ? "disabled=\"disabled\"" : "")>
 
                     <dt class="col-md-4">Price:</dt>
-                    <dd class="col-md-8"><input type="number" name="Stocktake.Price" value="@Model.Stocktake.Price" class="form-control"></dd>
+                    <dd class="col-md-8"><input type="number" name="Stocktake.Price" value="@Model.Stocktake.Price" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")></dd>
 
                     <dt class="col-md-4">Quantity:</dt>
-                    <dd class="col-md-8"><input type="number" name="Stocktake.Quantity" value="@Model.Stocktake.Quantity" class="form-control"></dd>
+                    <dd class="col-md-8"><input type="number" name="Stocktake.Quantity" value="@Model.Stocktake.Quantity" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")></dd>
 
                     <dt class="col-md-4">Source:</dt>
                     <dd class="col-md-8">
-                        <select name="Source.Sourceid" id="Source" class="form-control">
+                        <select name="Source.Sourceid" id="Source" class="form-control" @(isDisabled ? "disabled=\"disabled\"" : "")>
                             <!-- Populated via JavaScript -->
                         </select>
                     </dd>
                 </dl>
-                <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-primary">@(isEdit ? "Update Item" : "Add Item")</button>
-                </div>
+                @if (!isDisabled)
+                {
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-primary">@(isEdit ? "Update Item" : "Add Item")</button>
+                    </div>
+                }
             </div>
         </div>
     </form>
-    <div class="row justify-content-center mt-2">
-        <button class="btn btn-outline-primary col-md-8" id="deleteButton">Delete Item</button
-    </div>
+    @if (!isDisabled)
+    {
+        <div class="row justify-content-center mt-2">
+            <button class="btn btn-outline-primary col-md-8" id="deleteButton">Delete Item</button
+        </div>
+    }
 </div>
 
 <script>

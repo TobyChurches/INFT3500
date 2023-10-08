@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebStore.Models;
 
-public partial class StoreDbContext : DbContext
+public partial class StoreDbContext : IdentityDbContext<User>
 {
     public StoreDbContext()
     {
@@ -42,6 +41,8 @@ public partial class StoreDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<BookGenre>(entity =>
         {
             entity.HasKey(e => e.SubGenreId);

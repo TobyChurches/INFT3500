@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace WebStore.Models;
 
-public partial class User
+public partial class User : IdentityUser
 {
     public int UserId { get; set; }
 
-    public string UserName { get; set; } = null!;
+    override public string UserName { get; set; } = null!;
 
-    public string? Email { get; set; }
+    override public string? Email { get; set; }
 
     public string? Name { get; set; }
 

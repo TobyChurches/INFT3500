@@ -1,29 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.ViewModels;
 
 namespace WebStore.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly StoreDbContext _context;
+    private readonly UserManager<User> _userManager;
 
-    public HomeController(StoreDbContext context)
+    public HomeController(StoreDbContext context, UserManager<User> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        // Get username from session
-        var customer = 11;
+        var user = await _userManager.FindByNameAsync(User.Identity?.Name);
+        var customerIds = _context.Tos
+            .Where(x => x.PatronId == user.UserId)
+            .Select(x => x.CustomerId)
+            .ToList();
 
         var orders = _context.Orders
-            .Where(x => x.Customer == 11)
+            .Where(x => x.Customer != null && customerIds.Contains(x.Customer.Value))
             .Select(x => new OrderViewModel()
             {
-                Name = "",
-                Address = x.StreetAddress,
+                Name = user.Email ?? "",
+                Address = $"{x.StreetAddress}, {x.Suburb}, {x.State} {x.PostCode}",
                 OrderId = x.OrderId
             })
             .ToList();
@@ -37,11 +45,6 @@ public class HomeController : Controller
     }
 
     public IActionResult OrderDetails()
-    {
-        return View();
-    }
-
-    public IActionResult Account()
     {
         return View();
     }

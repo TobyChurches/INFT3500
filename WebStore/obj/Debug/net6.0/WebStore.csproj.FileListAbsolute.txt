@@ -42,6 +42,9 @@ C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Azure.Identity.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Humanizer.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\MessagePack.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\MessagePack.Annotations.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -84,6 +87,10 @@ C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.IdentityMode
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
@@ -106,6 +113,7 @@ C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\NuGet.Packaging.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Owin.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\System.CodeDom.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\System.Composition.Convention.dll
@@ -300,10 +308,3 @@ C:\University\INFT3500\INFT3500\WebStore\obj\Debug\net6.0\refint\WebStore.dll
 C:\University\INFT3500\INFT3500\WebStore\obj\Debug\net6.0\WebStore.pdb
 C:\University\INFT3500\INFT3500\WebStore\obj\Debug\net6.0\WebStore.genruntimeconfig.cache
 C:\University\INFT3500\INFT3500\WebStore\obj\Debug\net6.0\ref\WebStore.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
-C:\University\INFT3500\INFT3500\WebStore\bin\Debug\net6.0\Owin.dll

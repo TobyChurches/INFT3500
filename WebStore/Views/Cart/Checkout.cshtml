@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CheckoutViewModel
+@{
     ViewData["Title"] = "Checkout";
 }
 
@@ -24,7 +25,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Email</span>
                         </div>
-                        <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                        <input type="email" class="form-control" placeholder="Enter Email" name="email" asp-for="Email">
                     </div>
                 </div>
 
@@ -33,7 +34,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Phone Number</span>
                         </div>
-                        <input type="tel" class="form-control" placeholder="Enter Phone Number" name="phoneNumber">
+                        <input type="tel" class="form-control" placeholder="Enter Phone Number" name="phoneNumber" asp-for="PhoneNumber">
                     </div>
                 </div>
 
@@ -42,7 +43,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Street Address</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
+                        <input type="text" class="form-control" placeholder="Enter Street Address" name="address" asp-for="Address">
                     </div>
                 </div>
 
@@ -51,7 +52,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Postcode</span>
                         </div>
-                        <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
+                        <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode" asp-for="Postcode">
                     </div>
                 </div>
 
@@ -60,7 +61,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Suburb</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
+                        <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb" asp-for="Suburb">
                     </div>
                 </div>
 
@@ -69,7 +70,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">State</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Enter State" name="state">
+                        <input type="text" class="form-control" placeholder="Enter State" name="state" asp-for="State">
                     </div>
                 </div>
             </fieldset>
@@ -80,7 +81,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Street Address</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Enter Street Address" name="address">
+                            <input type="text" class="form-control" placeholder="Enter Street Address" name="deliveryAddress" asp-for="DeliveryAddress">
                         </div>
                     </div>
 
@@ -89,7 +90,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Postcode</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Enter Postcode" name="postcode">
+                        <input type="number" class="form-control" placeholder="Enter Postcode" name="deliveryPostcode" asp-for="DeliveryPostcode">
                         </div>
                     </div>
 
@@ -98,7 +99,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Suburb</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Enter Suburb" name="suburb">
+                        <input type="text" class="form-control" placeholder="Enter Suburb" name="deliverySuburb" asp-for="DeliverySuburb">
                         </div>
                     </div>
 
@@ -107,7 +108,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">State</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Enter State" name="state">
+                        <input type="text" class="form-control" placeholder="Enter State" name="deliveryState" asp-for="DeliveryState">
                         </div>
                     </div>
             </fieldset>
@@ -118,7 +119,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Card Number</span>
                         </div>
-                        <input type="number" class="form-control" placeholder="Enter Card Number" name="cardNumber">
+                        <input type="number" class="form-control" placeholder="Enter Card Number" name="cardNumber" asp-for="CardNumber">
                     </div>
                 </div>
 
@@ -127,7 +128,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Card Owner</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Enter Card Owner's Name" name="cardOwner">
+                        <input type="text" class="form-control" placeholder="Enter Card Owner's Name" name="cardOwner" asp-for="CardOwner">
                     </div>
                 </div>
 
@@ -136,7 +137,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Expiry</span>
                         </div>
-                        <input type="date" class="form-control" placeholder="Enter Expiry Date" name="expiry">
+                        <input type="month" class="form-control" placeholder="Enter Expiry Date" name="expiry" asp-for="Expiry">
                     </div>
                 </div>
 
@@ -145,7 +146,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">CVV</span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Enter CVV" name="cvv">
+                        <input type="password" class="form-control" placeholder="Enter CVV" name="cvv" asp-for="CVV">
                     </div>
                 </div>
             </fieldset>

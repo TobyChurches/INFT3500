@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebStore.Models;
 using WebStore.Models.ViewModels;
 
 namespace WebStore.Controllers;
 
+[Authorize(Roles = "Admin, Employee")]
 public class AdminController : Controller
 {
     private readonly StoreDbContext _context;
@@ -90,7 +92,7 @@ public class AdminController : Controller
             .ToList();
     }
 
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public IActionResult EditItem(AdminProductViewModel updatedProduct)
     {
@@ -141,6 +143,7 @@ public class AdminController : Controller
         return RedirectToAction("EditItem", new { id = updatedProduct.Product.Id });
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult AddItem()
     {
@@ -164,7 +167,7 @@ public class AdminController : Controller
         return View("EditItem", vm);
     }
 
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public IActionResult AddItem(Product newProduct)
     {
@@ -246,6 +249,7 @@ public class AdminController : Controller
         return View(user);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public IActionResult EditUser(User updatedUser)
     {
@@ -278,12 +282,14 @@ public class AdminController : Controller
         return RedirectToAction("EditUser", new { id = updatedUser.UserName });
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult AddUser()
     {
         return View("EditUser", new User());
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public IActionResult AddUser(User newUser)
     {
@@ -315,6 +321,7 @@ public class AdminController : Controller
         return RedirectToAction("EditUser", new { id = newUser.UserName });
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult DeleteUser(string id)
     {
@@ -334,6 +341,7 @@ public class AdminController : Controller
         return RedirectToAction("UserList", "Admin", new { searchQuery = ""});
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult DeleteItem(int id)
     {

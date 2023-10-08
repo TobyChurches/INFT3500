@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebStore.Models;
 using WebStore.Models.ViewModels;
 
 namespace WebStore.Controllers;
 
+[Authorize(Roles = "Customer")]
 public class SearchController : Controller
 {
     private readonly StoreDbContext _context;
@@ -42,6 +44,13 @@ public class SearchController : Controller
         return View(vm);
     }
 
+    [HttpGet]
+    public IActionResult SearchResults()
+    {
+        var searchQuery = HttpContext.Session.GetString("SearchQuery") ?? "";
+        return SearchResults(searchQuery);
+    }
+
     [HttpPost]
     public ActionResult SearchResults(string searchQuery)
     {
@@ -65,6 +74,7 @@ public class SearchController : Controller
             result.SubGenre = getSubGenre(result.Genre, result.Product.SubGenre);
         }
 
+        HttpContext.Session.SetString("SearchQuery", searchQuery);
         return View(results);
     }
 
